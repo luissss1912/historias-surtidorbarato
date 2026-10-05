@@ -107,8 +107,12 @@ def toca_hoy(c, ahora, h, modo):
     return True, "", fin
 
 
-def completar_historico(h, hoy: dt.date, dias=14):
-    """Rellena con el histórico del Ministerio los días que falten (para variación y resumen semanal)."""
+def completar_historico(h, hoy: dt.date):
+    """Rellena con el histórico del Ministerio los días que falten: siempre ayer (para la
+    variación) y, los domingos, las dos últimas semanas (para el resumen). Si el Ministerio
+    no responde dos veces seguidas, se deja para otro día."""
+    dias = 13 if hoy.weekday() == 6 else 1
+    fallos = 0
     for i in range(1, dias + 1):
         f = hoy - dt.timedelta(days=i)
         if h["dias"].get(f.isoformat(), {}).get("media95"):
@@ -116,8 +120,13 @@ def completar_historico(h, hoy: dt.date, dias=14):
         try:
             hist.registrar_medias(h, f.isoformat(), datos.medias_ministerio(f), "ministerio-historico")
             print(f"  Histórico completado: {f}")
+            fallos = 0
         except datos.DatosNoDisponibles as e:
             print(f"  Sin histórico para {f}: {e}")
+            fallos += 1
+            if fallos >= 2:
+                print("  El Ministerio no responde; el histórico se completará otro día.")
+                return
 
 
 def generar(dia, h, c, salida: Path, consejo_forzado=None, solo_estas=None):

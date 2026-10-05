@@ -137,7 +137,7 @@ def resumir(indice, por_provincia):
 def medias_ministerio(fecha: dt.date):
     """Medias de España de un día pasado según el histórico del Ministerio."""
     url = f"{MINISTERIO}/EstacionesTerrestresHist/{fecha.strftime('%d-%m-%Y')}"
-    crudo = _get_json(url, timeout=180)
+    crudo = _get_json(url, intentos=2, timeout=90)
     if crudo.get("ResultadoConsulta") != "OK":
         raise DatosNoDisponibles(f"Ministerio: {crudo.get('ResultadoConsulta')}")
     lista = [e for e in crudo["ListaEESSPrecio"] if e.get("Tipo Venta", "P") == "P"]
