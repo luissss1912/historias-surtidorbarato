@@ -78,20 +78,12 @@ jobs:
         if: steps.comprobar.outputs.toca == 'si'
         run: python scripts/generar.py --forzar
 
-      - name: Enviar por Telegram
-        if: steps.generar.outputs.toca == 'si'
-        env:
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-          FECHA: ${{ steps.generar.outputs.fecha }}
-        run: python scripts/telegram.py
-
       - name: Guardar histórico
         if: always() && steps.comprobar.outputs.toca == 'si'
         run: |
           git config user.name "historias-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add historico.json
-          [ -f recursos/telegram_chat.txt ] && git add recursos/telegram_chat.txt
           git diff --cached --quiet || (git commit -m "Histórico ${{ steps.generar.outputs.fecha }}" && git push)
 
       - name: Preparar imágenes para GitHub Pages
@@ -100,9 +92,30 @@ jobs:
         with:
           path: publico
 
+      - name: Enviar por Telegram
+        id: telegram
+        if: steps.generar.outputs.toca == 'si'
+        continue-on-error: true
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          FECHA: ${{ steps.generar.outputs.fecha }}
+        run: python scripts/telegram.py
+
+      - name: Guardar chat de Telegram
+        if: steps.telegram.outcome == 'success'
+        run: |
+          git add recursos/telegram_chat.txt 2>/dev/null || true
+          git diff --cached --quiet || (git commit -m "Chat de Telegram" && git push)
+
+      - name: Avisar si Telegram ha fallado
+        if: steps.telegram.outcome == 'failure'
+        run: |
+          echo "::error::No se han podido enviar las historias por Telegram (mira el paso «Enviar por Telegram»)."
+          exit 1
+
   pages:
     needs: generar
-    if: needs.generar.outputs.toca == 'si'
+    if: ${{ !cancelled() && needs.generar.outputs.toca == 'si' }}
     runs-on: ubuntu-latest
     environment:
       name: github-pages
