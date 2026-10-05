@@ -1,0 +1,155 @@
+name: Historias diarias
+
+on:
+  # Cada media hora. El script decide si toca según la hora de config.yml
+  # (así el cambio de hora de verano/invierno no afecta y la hora se cambia en un solo sitio).
+  schedule:
+    - cron: "5,35 * * * *"
+    # Comprobación diaria del token de Instagram (07:15 UTC)
+    - cron: "15 7 * * *"
+  workflow_dispatch:
+    inputs:
+      modo:
+        description: "prueba = solo generar imágenes · publicar = subirlas a Instagram"
+        type: choice
+        options: [prueba, publicar]
+        default: prueba
+      forzar:
+        description: "Generar ahora aunque no sea la hora"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: historias
+  cancel-in-progress: false
+
+env:
+  MODO: ${{ github.event.inputs.modo || vars.MODO || 'prueba' }}
+  TZ: Europe/Madrid
+
+jobs:
+  generar:
+    if: github.event.schedule != '15 7 * * *'
+    runs-on: ubuntu-latest
+    outputs:
+      toca: ${{ steps.generar.outputs.toca }}
+      fecha: ${{ steps.generar.outputs.fecha }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Instalar dependencias de Python
+        run: pip install -r requirements.txt
+
+      - name: ¿Toca publicar ahora?
+        id: comprobar
+        run: |
+          if [ "${{ github.event.inputs.forzar }}" = "true" ]; then
+            echo "toca=si" >> "$GITHUB_OUTPUT"
+          else
+            python scripts/generar.py --comprobar
+          fi
+
+      - name: Instalar cairo y fuentes
+        if: steps.comprobar.outputs.toca == 'si'
+        run: |
+          sudo apt-get install -y -qq libcairo2 > /dev/null
+          mkdir -p recursos/fuentes ~/.local/share/fonts
+          for f in barlowcondensed/BarlowCondensed-Bold.ttf barlowcondensed/BarlowCondensed-SemiBold.ttf \
+                   barlow/Barlow-Medium.ttf sharetechmono/ShareTechMono-Regular.ttf; do
+            [ -f "recursos/fuentes/$(basename $f)" ] || curl -sSfL -o "recursos/fuentes/$(basename $f)" \
+              "https://raw.githubusercontent.com/google/fonts/main/ofl/$f"
+          done
+          cp recursos/fuentes/*.ttf ~/.local/share/fonts/
+          fc-cache -f > /dev/null
+
+      - name: Generar historias
+        id: generar
+        if: steps.comprobar.outputs.toca == 'si'
+        run: python scripts/generar.py --forzar
+
+      - name: Guardar histórico
+        if: always() && steps.comprobar.outputs.toca == 'si'
+        run: |
+          git config user.name "historias-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add historico.json
+          git diff --cached --quiet || (git commit -m "Histórico ${{ steps.generar.outputs.fecha }}" && git push)
+
+      - name: Preparar imágenes para GitHub Pages
+        if: steps.generar.outputs.toca == 'si'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: publico
+
+  pages:
+    needs: generar
+    if: needs.generar.outputs.toca == 'si'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.despliegue.outputs.page_url }}
+    outputs:
+      url: ${{ steps.despliegue.outputs.page_url }}
+    steps:
+      - name: Publicar imágenes en GitHub Pages
+        id: despliegue
+        uses: actions/deploy-pages@v4
+
+  instagram:
+    needs: [generar, pages]
+    if: needs.generar.outputs.toca == 'si' && (github.event.inputs.modo || vars.MODO || 'prueba') == 'publicar'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}   # la última versión, con el histórico recién guardado
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Publicar historias en Instagram
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          IG_USER_ID: ${{ vars.IG_USER_ID }}
+          BASE_URL: ${{ needs.pages.outputs.url }}
+          FECHA: ${{ needs.generar.outputs.fecha }}
+        run: python scripts/publicar.py
+
+      - name: Guardar historias publicadas
+        if: always()
+        run: |
+          git config user.name "historias-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add historico.json
+          git diff --cached --quiet || (git commit -m "Publicadas ${{ needs.generar.outputs.fecha }}" && git push)
+
+  token:
+    # Una vez al día comprueba el token de Instagram y avisa (falla → correo) si va a caducar
+    if: github.event_name == 'workflow_dispatch' || github.event.schedule == '15 7 * * *'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Comprobar token
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          IG_TOKEN_CADUCA: ${{ vars.IG_TOKEN_CADUCA }}
+        run: python scripts/aviso_token.py

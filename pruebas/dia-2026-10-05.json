@@ -1,0 +1,56 @@
+{
+ "_nota": "Datos reales de surtidorbarato.es del 05/10/2026 11:30, solo para revisar el diseño. La media de ayer se ha puesto para que la variación coincida con la que muestra la web ese día (-0,3 y -0,2 cts).",
+ "fecha": "2026-10-05",
+ "media95": 1.802457462412934,
+ "mediaDiesel": 1.9069991122158987,
+ "media98": 1.95122149481723,
+ "barata": {"rotulo": "Oil Prix", "municipio": "Tarragona", "provincia": "Tarragona", "precio": 1.465},
+ "historico": {
+  "2026-10-04": {"media95": 1.805, "mediaDiesel": 1.909}
+ },
+ "provincias": {
+  "28": {"nombre": "Madrid", "media95": 1.803030373831779, "min95": 1.549, "max95": 2.119, "top5": [
+   {"rotulo": "Plenergy", "municipio": "Ciempozuelos", "precio": 1.549},
+   {"rotulo": "Gasolinera Ciempozuelos", "municipio": "Ciempozuelos", "precio": 1.559},
+   {"rotulo": "Plenergy", "municipio": "Fuenlabrada", "precio": 1.609},
+   {"rotulo": "Petroprix", "municipio": "Fuenlabrada", "precio": 1.609},
+   {"rotulo": "Ballenoil", "municipio": "Fuenlabrada", "precio": 1.609}]},
+  "08": {"nombre": "Barcelona", "media95": 1.781700130378099, "min95": 1.599, "max95": 2.049, "top5": [
+   {"rotulo": "Campsa Express", "municipio": "Montmeló", "precio": 1.599},
+   {"rotulo": "El Surtidor", "municipio": "Montornès del Vallès", "precio": 1.599},
+   {"rotulo": "Shell", "municipio": "Sabadell", "precio": 1.599},
+   {"rotulo": "Alcampo", "municipio": "Sant Adrià de Besòs", "precio": 1.599},
+   {"rotulo": "Campsa Express", "municipio": "Gavà", "precio": 1.609}]},
+  "46": {"nombre": "Valencia", "media95": 1.807345840130506, "min95": 1.595, "max95": 2.139, "top5": [
+   {"rotulo": "Ballenoil", "municipio": "Xàtiva", "precio": 1.595},
+   {"rotulo": "+B Energias", "municipio": "Xàtiva", "precio": 1.595},
+   {"rotulo": "Plenergy", "municipio": "Xàtiva", "precio": 1.595},
+   {"rotulo": "Plenergy", "municipio": "La Pobla de Vallbona", "precio": 1.599},
+   {"rotulo": "Red Oil Tec", "municipio": "La Pobla de Vallbona", "precio": 1.599}]},
+  "41": {"nombre": "Sevilla", "media95": 1.8021192660550478, "min95": 1.579, "max95": 2.069, "top5": [
+   {"rotulo": "Plenergy", "municipio": "Sevilla", "precio": 1.579},
+   {"rotulo": "Pertroprix", "municipio": "Sevilla", "precio": 1.579},
+   {"rotulo": "Moove", "municipio": "Alcalá del Río", "precio": 1.599},
+   {"rotulo": "Family Energy", "municipio": "Morón de la Frontera", "precio": 1.599},
+   {"rotulo": "Petroprix", "municipio": "Morón de la Frontera", "precio": 1.599}]},
+  "15": {"nombre": "A Coruña", "media95": 1.8192155477031793, "min95": 1.619, "max95": 2.059, "top5": [
+   {"rotulo": "Petroprix", "municipio": "Cambre", "precio": 1.619},
+   {"rotulo": "Plenergy", "municipio": "Culleredo", "precio": 1.619},
+   {"rotulo": "Carbugal Alvedro", "municipio": "Culleredo", "precio": 1.629},
+   {"rotulo": "Petroprix", "municipio": "Abegondo", "precio": 1.649},
+   {"rotulo": "Plenergy", "municipio": "Arteixo", "precio": 1.659}]},
+  "16": {"nombre": "Cuenca", "media95": 1.8602476190476187},
+  "09": {"nombre": "Burgos", "media95": 1.8271791044776104, "min95": 1.659, "max95": 2.123, "top5": [
+   {"rotulo": "E.s. Rivera", "municipio": "Villarcayo de Merindad de Castilla la Vieja", "precio": 1.659},
+   {"rotulo": "Tenergy", "municipio": "Merindad de Montija", "precio": 1.685},
+   {"rotulo": "Norpetrol", "municipio": "Burgos", "precio": 1.689},
+   {"rotulo": "Avia", "municipio": "Medina de Pomar", "precio": 1.689},
+   {"rotulo": "E.LECLERC", "municipio": "Miranda de Ebro", "precio": 1.69}]},
+  "38": {"nombre": "Santa Cruz de Tenerife", "media95": 1.5807644628099167, "min95": 1.289, "max95": 1.823, "top5": [
+   {"rotulo": "Plenergy", "municipio": "Arafo", "precio": 1.289},
+   {"rotulo": "H2exagon Arafo", "municipio": "Arafo", "precio": 1.299},
+   {"rotulo": "Canary Oil, S.l.", "municipio": "Santa Cruz de Tenerife", "precio": 1.385},
+   {"rotulo": "Océano", "municipio": "Güímar", "precio": 1.399},
+   {"rotulo": "Petroprix", "municipio": "Los Realejos", "precio": 1.437}]}
+ }
+}

@@ -1,0 +1,30 @@
+# Configuración de las historias de @surtidorbarato
+# Cambia los valores aquí; el resto del código los lee de este archivo.
+
+# Hora de publicación (hora de Madrid). Único sitio donde se define.
+hora_publicacion: "08:30"
+
+# Si a esa hora los datos del Ministerio aún no son de hoy, se reintenta
+# cada media hora durante este número de horas. Pasado ese margen, ese día
+# no se publica nada.
+ventana_horas: 4
+
+zona_horaria: "Europe/Madrid"
+
+# Modo: "prueba" genera las imágenes sin publicarlas.
+#       "publicar" las sube a Instagram.
+# (Se puede cambiar también desde GitHub con la variable MODO.)
+modo: prueba
+
+# Provincias fijas (historia B), por código INE y en este orden.
+provincias_fijas: ["28", "08", "46", "41"]   # Madrid, Barcelona, Valencia, Sevilla
+
+# Litros de un depósito para los cálculos de «¿Sabías que...?»
+litros_deposito: 50
+
+# Instagram (Instagram API con inicio de sesión de Instagram)
+instagram:
+  host: "https://graph.instagram.com"
+  version: "v25.0"
+  # Días de antelación con que se avisa de que el token va a caducar
+  aviso_token_dias: 7
