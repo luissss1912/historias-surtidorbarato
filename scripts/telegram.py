@@ -71,7 +71,13 @@ def main():
         else:
             llamar(token, "sendMediaGroup", data={"chat_id": destino, "media": json.dumps(media)},
                    files=archivos)
-    print(f"Enviadas {len(historias)} historias por Telegram")
+    reel = manifest.get("reel")
+    if reel:
+        with open(carpeta / reel["mp4"], "rb") as v:
+            llamar(token, "sendDocument", data={"chat_id": destino, "caption": "🎬 Reel de hoy (súbelo como Reel y añade una canción en tendencia)"},
+                   files={"document": (reel["mp4"], v, "video/mp4")})
+        llamar(token, "sendMessage", data={"chat_id": destino, "text": "Texto para el Reel (cópialo):\n\n" + reel["texto"]})
+    print(f"Enviadas {len(historias)} historias{' y el Reel' if reel else ''} por Telegram")
 
 
 if __name__ == "__main__":

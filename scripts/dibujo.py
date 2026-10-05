@@ -117,8 +117,8 @@ def _icono_data_uri():
     return "data:image/svg+xml;base64," + base64.b64encode(ruta.read_bytes()).decode()
 
 
-def cabecera(color_texto=BLANCO):
-    x, y, lado = MARGEN, 160, 96
+def cabecera(color_texto=BLANCO, y=160):
+    x, lado = MARGEN, 96
     return (f'<rect x="{x}" y="{y}" width="{lado}" height="{lado}" rx="20" fill="{AZUL_OSCURO}"/>'
             f'<image x="{x + 4}" y="{y + 4}" width="{lado - 8}" height="{lado - 8}" href="{_icono_data_uri()}"/>'
             + texto(x + lado + 24, y + 66, "SURTIDOR BARATO", F_TITULO, 54, color_texto,
@@ -165,11 +165,12 @@ def documento(fondo, cuerpo):
             f'<rect width="{ANCHO}" height="{ALTO}" fill="{fondo}"/>{cuerpo}</svg>')
 
 
-def guardar_png(svg, ruta_png: Path):
+def guardar_png(svg, ruta_png: Path, jpg=True):
     import cairosvg  # necesita la librería de sistema cairo
 
     ruta_png.parent.mkdir(parents=True, exist_ok=True)
     cairosvg.svg2png(bytestring=svg.encode("utf-8"), write_to=str(ruta_png),
                      output_width=ANCHO, output_height=ALTO)
     # Instagram solo acepta JPEG: se guarda también una copia .jpg para publicar
-    Image.open(ruta_png).convert("RGB").save(ruta_png.with_suffix(".jpg"), "JPEG", quality=95)
+    if jpg:
+        Image.open(ruta_png).convert("RGB").save(ruta_png.with_suffix(".jpg"), "JPEG", quality=95)

@@ -53,6 +53,8 @@ def prueba_semana():
     """Simula 15 días seguidos (de lunes a lunes) con datos sintéticos, sin publicar nada."""
     import generar
     import historico as hist
+    import reel  # en la simulación no se renderiza el vídeo (tarda ~15 s por día)
+    reel.generar_reel = lambda d, ruta: (ruta.write_bytes(b""), ruta.with_suffix(".png").write_bytes(b""))
 
     tmp = Path(tempfile.mkdtemp())
     hist.RUTA = tmp / "historico.json"

@@ -193,15 +193,43 @@ def generar(dia, h, c, salida: Path, consejo_forzado=None, solo_estas=None):
         else:
             omitidas.append("E: faltan días en el histórico de las dos últimas semanas")
 
+    # R. Reel diario: la más barata de España frente a la media
+    reel = None
+    if not solo_estas or "R" in solo_estas:
+        if dia.get("barata") and dia.get("media95"):
+            from reel import generar_reel
+            litros = c["litros_deposito"]
+            b = dia["barata"]
+            ahorro = euros((r3(dia["media95"]) - r3(b["precio"])) * litros)
+            archivo = f"{f}_R_reel.mp4"
+            try:
+                generar_reel({"barata": b, "media95": dia["media95"], "ahorro": ahorro, "litros": litros}, carpeta / archivo)
+                lugar = b["municipio"] if b["municipio"].lower() == b["provincia"].lower() else f'{b["municipio"]} ({b["provincia"]})'
+                etiqueta = slug(b["provincia"]).replace("-", "")
+                texto = (f"⛽ La gasolina 95 más barata de España hoy, {fecha.day}/{fecha.month}: "
+                         f"{precio(b['precio'])} €/l en {b['rotulo']}, {lugar}. "
+                         f"La media está en {precio(dia['media95'])} €/l: {ahorro} menos en un depósito de {litros} litros.\n\n"
+                         "¿Y la más barata cerca de ti? 👉 surtidorbarato.es (enlace en el perfil)\n\n"
+                         f"#gasolina #gasolinabarata #preciogasolina #gasolinera #ahorro #{etiqueta}")
+                reel = {"mp4": archivo, "portada": archivo.replace(".mp4", ".png"), "texto": texto}
+                print(f"  ✓ {archivo}")
+            except Exception as e:  # el Reel no debe impedir las historias
+                omitidas.append(f"Reel: no se pudo generar ({e})")
+        else:
+            omitidas.append("Reel: falta la más barata de España o la media")
+
     (carpeta / "manifest.json").write_text(json.dumps(
-        {"fecha": f, "historias": historias, "omitidas": omitidas}, ensure_ascii=False, indent=1), encoding="utf-8")
-    escribir_indice(salida, f, historias, omitidas)
+        {"fecha": f, "historias": historias, "reel": reel, "omitidas": omitidas}, ensure_ascii=False, indent=1), encoding="utf-8")
+    escribir_indice(salida, f, historias, omitidas, reel)
     return historias, omitidas
 
 
-def escribir_indice(salida, f, historias, omitidas):
+def escribir_indice(salida, f, historias, omitidas, reel=None):
     tarjetas = "".join(f'<figure><img src="{f}/{x["png"]}" alt="{x["clave"]}"><figcaption>{x["png"]}</figcaption></figure>'
                        for x in historias)
+    if reel:
+        tarjetas += (f'<figure><video src="{f}/{reel["mp4"]}" poster="{f}/{reel["portada"]}" controls playsinline '
+                     f'style="width:100%;border-radius:12px"></video><figcaption>{reel["mp4"]}</figcaption></figure>')
     avisos = "".join(f"<li>{o}</li>" for o in omitidas) or "<li>Ninguna</li>"
     (salida / "index.html").write_text(f"""<!doctype html><html lang="es"><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"><title>Historias {f}</title>
