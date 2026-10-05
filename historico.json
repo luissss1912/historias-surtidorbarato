@@ -1,5 +1,47 @@
 {
  "dias": {
+  "2026-09-28": {
+   "media95": 1.93449,
+   "mediaDiesel": 1.93121,
+   "media98": 2.09027,
+   "origen": "ministerio-historico"
+  },
+  "2026-09-29": {
+   "media95": 1.93391,
+   "mediaDiesel": 1.92813,
+   "media98": 2.08991,
+   "origen": "ministerio-historico"
+  },
+  "2026-09-30": {
+   "media95": 1.92857,
+   "mediaDiesel": 1.9235,
+   "media98": 2.08399,
+   "origen": "ministerio-historico"
+  },
+  "2026-10-01": {
+   "media95": 1.81996,
+   "mediaDiesel": 1.9171,
+   "media98": 1.96315,
+   "origen": "ministerio-historico"
+  },
+  "2026-10-02": {
+   "media95": 1.80868,
+   "mediaDiesel": 1.91412,
+   "media98": 1.95774,
+   "origen": "ministerio-historico"
+  },
+  "2026-10-03": {
+   "media95": 1.80599,
+   "mediaDiesel": 1.91274,
+   "media98": 1.95357,
+   "origen": "ministerio-historico"
+  },
+  "2026-10-04": {
+   "media95": 1.80524,
+   "mediaDiesel": 1.90861,
+   "media98": 1.95315,
+   "origen": "ministerio-historico"
+  },
   "2026-10-05": {
    "media95": 1.80084,
    "mediaDiesel": 1.90633,
