@@ -1,10 +1,16 @@
 name: Historias diarias
 
 on:
-  # Cada media hora. El script decide si toca según la hora de config.yml
-  # (así el cambio de hora de verano/invierno no afecta y la hora se cambia en un solo sitio).
+  # GitHub no garantiza los horarios: a veces retrasa o se salta ejecuciones (sobre todo en
+  # punto y a y media). Por eso hay 13 intentos repartidos por la mañana en minutos "raros".
+  # El script decide si toca según la hora de config.yml y solo
+  # trabaja una vez al día, así que los intentos de más no hacen nada.
+  # Horas en UTC: cubren 08:30-12:30 de Madrid en verano (UTC+2) y en invierno (UTC+1).
   schedule:
-    - cron: "5,35 * * * *"
+    - cron: "33,41,49,57 6 * * *"
+    - cron: "9,21,33,41,53 7 * * *"
+    - cron: "13,37 8 * * *"
+    - cron: "23 9,10 * * *"
     # Comprobación diaria del token de Instagram (07:15 UTC)
     - cron: "15 7 * * *"
   workflow_dispatch:
