@@ -251,6 +251,31 @@
     "B-41",
     "C-48"
    ]
+  },
+  "2026-10-14": {
+   "media95": 1.78661,
+   "mediaDiesel": 1.88762,
+   "media98": 1.94784,
+   "origen": "web",
+   "barata": {
+    "rotulo": "Oil Prix",
+    "municipio": "Tarragona",
+    "provincia": "Tarragona",
+    "precio": 1.465,
+    "id": 14721
+   },
+   "rotatoria": "09",
+   "consejo": 2,
+   "estado": "generado",
+   "generadas": [
+    "A",
+    "B-28",
+    "B-08",
+    "B-46",
+    "B-41",
+    "C-09",
+    "D"
+   ]
   }
  }
 }
