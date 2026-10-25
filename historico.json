@@ -509,6 +509,30 @@
     "B-41",
     "C-17"
    ]
+  },
+  "2026-10-25": {
+   "media95": 1.74402,
+   "mediaDiesel": 1.88847,
+   "media98": 1.91075,
+   "origen": "web",
+   "barata": {
+    "rotulo": "Plenergy",
+    "municipio": "La Pobla de Vallbona",
+    "provincia": "Valencia",
+    "precio": 1.439,
+    "id": 9329
+   },
+   "rotatoria": "18",
+   "estado": "generado",
+   "generadas": [
+    "A",
+    "B-28",
+    "B-08",
+    "B-46",
+    "B-41",
+    "C-18",
+    "E"
+   ]
   }
  }
 }
