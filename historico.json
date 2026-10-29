@@ -604,6 +604,29 @@
     "C-22",
     "D"
    ]
+  },
+  "2026-10-29": {
+   "media95": 1.73428,
+   "mediaDiesel": 1.89842,
+   "media98": 1.90351,
+   "origen": "web",
+   "barata": {
+    "rotulo": "Galp",
+    "municipio": "Sant Adrià de Besòs",
+    "provincia": "Barcelona",
+    "precio": 1.464,
+    "id": 2093
+   },
+   "rotatoria": "07",
+   "estado": "generado",
+   "generadas": [
+    "A",
+    "B-28",
+    "B-08",
+    "B-46",
+    "B-41",
+    "C-07"
+   ]
   }
  }
 }
