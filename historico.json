@@ -650,6 +650,29 @@
     "B-41",
     "C-23"
    ]
+  },
+  "2026-10-31": {
+   "media95": 1.72502,
+   "mediaDiesel": 1.89728,
+   "media98": 1.89595,
+   "origen": "web",
+   "barata": {
+    "rotulo": "Alcampo",
+    "municipio": "Reus",
+    "provincia": "Tarragona",
+    "precio": 1.459,
+    "id": 12116
+   },
+   "rotatoria": "26",
+   "estado": "generado",
+   "generadas": [
+    "A",
+    "B-28",
+    "B-08",
+    "B-46",
+    "B-41",
+    "C-26"
+   ]
   }
  }
 }
