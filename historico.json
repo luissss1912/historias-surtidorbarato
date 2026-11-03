@@ -720,6 +720,29 @@
     "B-41",
     "C-24"
    ]
+  },
+  "2026-11-03": {
+   "media95": 1.72159,
+   "mediaDiesel": 1.89622,
+   "media98": 1.8934,
+   "origen": "web",
+   "barata": {
+    "rotulo": "Petroprix",
+    "municipio": "Valladolid",
+    "provincia": "Valladolid",
+    "precio": 1.439,
+    "id": 16351
+   },
+   "rotatoria": "25",
+   "estado": "generado",
+   "generadas": [
+    "A",
+    "B-28",
+    "B-08",
+    "B-46",
+    "B-41",
+    "C-25"
+   ]
   }
  }
 }
