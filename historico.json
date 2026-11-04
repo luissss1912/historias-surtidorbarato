@@ -743,6 +743,31 @@
     "B-41",
     "C-25"
    ]
+  },
+  "2026-11-04": {
+   "media95": 1.71173,
+   "mediaDiesel": 1.89223,
+   "media98": 1.88155,
+   "origen": "web",
+   "barata": {
+    "rotulo": "Gasolinera Valladolid Pisuerga",
+    "municipio": "Valladolid",
+    "provincia": "Valladolid",
+    "precio": 1.424,
+    "id": 11330
+   },
+   "rotatoria": "27",
+   "consejo": 5,
+   "estado": "generado",
+   "generadas": [
+    "A",
+    "B-28",
+    "B-08",
+    "B-46",
+    "B-41",
+    "C-27",
+    "D"
+   ]
   }
  }
 }
