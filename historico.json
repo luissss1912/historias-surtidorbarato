@@ -768,6 +768,29 @@
     "C-27",
     "D"
    ]
+  },
+  "2026-11-05": {
+   "media95": 1.70208,
+   "mediaDiesel": 1.88875,
+   "media98": 1.87449,
+   "origen": "web",
+   "barata": {
+    "rotulo": "Tamoil",
+    "municipio": "L'Hospitalet de Llobregat",
+    "provincia": "Barcelona",
+    "precio": 1.399,
+    "id": 3026
+   },
+   "rotatoria": "29",
+   "estado": "generado",
+   "generadas": [
+    "A",
+    "B-28",
+    "B-08",
+    "B-46",
+    "B-41",
+    "C-29"
+   ]
   }
  }
 }
