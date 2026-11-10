@@ -884,6 +884,29 @@
     "B-41",
     "C-32"
    ]
+  },
+  "2026-11-10": {
+   "media95": 1.66807,
+   "mediaDiesel": 1.86429,
+   "media98": 1.8505,
+   "origen": "web",
+   "barata": {
+    "rotulo": "Plenergy",
+    "municipio": "L'Hospitalet de Llobregat",
+    "provincia": "Barcelona",
+    "precio": 1.289,
+    "id": 10679
+   },
+   "rotatoria": "34",
+   "estado": "generado",
+   "generadas": [
+    "A",
+    "B-28",
+    "B-08",
+    "B-46",
+    "B-41",
+    "C-34"
+   ]
   }
  }
 }
