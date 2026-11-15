@@ -1001,6 +1001,30 @@
     "B-41",
     "C-40"
    ]
+  },
+  "2026-11-15": {
+   "media95": 1.61383,
+   "mediaDiesel": 1.83024,
+   "media98": 1.79992,
+   "origen": "web",
+   "barata": {
+    "rotulo": "Plenergy",
+    "municipio": "Castellar del Vallès",
+    "provincia": "Barcelona",
+    "precio": 1.299,
+    "id": 2351
+   },
+   "rotatoria": "42",
+   "estado": "generado",
+   "generadas": [
+    "A",
+    "B-28",
+    "B-08",
+    "B-46",
+    "B-41",
+    "C-42",
+    "E"
+   ]
   }
  }
 }
