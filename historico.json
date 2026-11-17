@@ -1048,6 +1048,29 @@
     "B-41",
     "C-43"
    ]
+  },
+  "2026-11-17": {
+   "media95": 1.60103,
+   "mediaDiesel": 1.82294,
+   "media98": 1.79033,
+   "origen": "web",
+   "barata": {
+    "rotulo": "Plenergy",
+    "municipio": "Onda",
+    "provincia": "Castellón",
+    "precio": 1.269,
+    "id": 15816
+   },
+   "rotatoria": "44",
+   "estado": "generado",
+   "generadas": [
+    "A",
+    "B-28",
+    "B-08",
+    "B-46",
+    "B-41",
+    "C-44"
+   ]
   }
  }
 }
