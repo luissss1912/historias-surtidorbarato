@@ -1071,6 +1071,31 @@
     "B-41",
     "C-44"
    ]
+  },
+  "2026-11-18": {
+   "media95": 1.5915,
+   "mediaDiesel": 1.81636,
+   "media98": 1.78212,
+   "origen": "web",
+   "barata": {
+    "rotulo": "Ballenoil",
+    "municipio": "Tarragona",
+    "provincia": "Tarragona",
+    "precio": 1.259,
+    "id": 3291
+   },
+   "rotatoria": "45",
+   "consejo": 2,
+   "estado": "generado",
+   "generadas": [
+    "A",
+    "B-28",
+    "B-08",
+    "B-46",
+    "B-41",
+    "C-45",
+    "D"
+   ]
   }
  }
 }
