@@ -1096,6 +1096,29 @@
     "C-45",
     "D"
    ]
+  },
+  "2026-11-19": {
+   "media95": 1.5802,
+   "mediaDiesel": 1.80814,
+   "media98": 1.77131,
+   "origen": "web",
+   "barata": {
+    "rotulo": "Plenergy",
+    "municipio": "Tudela",
+    "provincia": "Navarra",
+    "precio": 1.267,
+    "id": 16323
+   },
+   "rotatoria": "47",
+   "estado": "generado",
+   "generadas": [
+    "A",
+    "B-28",
+    "B-08",
+    "B-46",
+    "B-41",
+    "C-47"
+   ]
   }
  }
 }
