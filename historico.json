@@ -1165,6 +1165,30 @@
     "B-41",
     "C-50"
    ]
+  },
+  "2026-11-22": {
+   "media95": 1.55,
+   "mediaDiesel": 1.78264,
+   "media98": 1.74231,
+   "origen": "web",
+   "barata": {
+    "rotulo": "La Remediadora",
+    "municipio": "La Roda",
+    "provincia": "Albacete",
+    "precio": 1.239,
+    "id": 8958
+   },
+   "rotatoria": "15",
+   "estado": "generado",
+   "generadas": [
+    "A",
+    "B-28",
+    "B-08",
+    "B-46",
+    "B-41",
+    "C-15",
+    "E"
+   ]
   }
  }
 }
