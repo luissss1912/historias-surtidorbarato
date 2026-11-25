@@ -1189,6 +1189,37 @@
     "C-15",
     "E"
    ]
+  },
+  "2026-11-24": {
+   "media95": 1.52907,
+   "mediaDiesel": 1.76334,
+   "media98": 1.7244,
+   "origen": "ministerio-historico"
+  },
+  "2026-11-25": {
+   "media95": 1.52574,
+   "mediaDiesel": 1.75887,
+   "media98": 1.71936,
+   "origen": "web",
+   "barata": {
+    "rotulo": "Alcampo",
+    "municipio": "Alcorcón",
+    "provincia": "Madrid",
+    "precio": 1.21,
+    "id": 10658
+   },
+   "rotatoria": "02",
+   "consejo": 3,
+   "estado": "generado",
+   "generadas": [
+    "A",
+    "B-28",
+    "B-08",
+    "B-46",
+    "B-41",
+    "C-02",
+    "D"
+   ]
   }
  }
 }
