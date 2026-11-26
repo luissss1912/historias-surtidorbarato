@@ -1220,6 +1220,29 @@
     "C-02",
     "D"
    ]
+  },
+  "2026-11-26": {
+   "media95": 1.51446,
+   "mediaDiesel": 1.74692,
+   "media98": 1.70791,
+   "origen": "web",
+   "barata": {
+    "rotulo": "Gasoelectric Low Cost",
+    "municipio": "Fuenlabrada",
+    "provincia": "Madrid",
+    "precio": 1.184,
+    "id": 13374
+   },
+   "rotatoria": "03",
+   "estado": "generado",
+   "generadas": [
+    "A",
+    "B-28",
+    "B-08",
+    "B-46",
+    "B-41",
+    "C-03"
+   ]
   }
  }
 }
