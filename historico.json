@@ -1266,6 +1266,29 @@
     "B-41",
     "C-04"
    ]
+  },
+  "2026-11-28": {
+   "media95": 1.49609,
+   "mediaDiesel": 1.72788,
+   "media98": 1.69303,
+   "origen": "web",
+   "barata": {
+    "rotulo": "Plenergy",
+    "municipio": "Vinaròs",
+    "provincia": "Castellón",
+    "precio": 1.169,
+    "id": 3489
+   },
+   "rotatoria": "01",
+   "estado": "generado",
+   "generadas": [
+    "A",
+    "B-28",
+    "B-08",
+    "B-46",
+    "B-41",
+    "C-01"
+   ]
   }
  }
 }
